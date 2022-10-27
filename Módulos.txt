@@ -1,0 +1,20 @@
+Módulos 
+
+Formulário de Login
+
+Exibição de livros
+
+Exibição de empréstimos individuais
+
+Exibição unica do livro
+
+Formulário de cadastro de usuário
+
+Exibição de emprésitmos para adm
+
+Cadastro de livro
+
+Comentários 
+
+
+

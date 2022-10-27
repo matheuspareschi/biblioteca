@@ -1,0 +1,71 @@
+.userReg {
+  position: fixed;
+  top: 0;
+  left:0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.userReg___container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 65vw;
+  height: 65vh;
+  justify-content: center;
+  background: var(--forth-color);
+  margin: auto;
+  backdrop-filter: blur(12px);
+  border-radius: 4rem;
+  position: absolute;
+}
+
+.userReg___title {
+  color: var(--primary-color);
+  margin: 0;
+  font-family: "Red Hat Display", sans-serif;
+  margin-top: -2.5rem;
+}
+
+.userReg___form {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  justify-content: space-between;
+  padding: 1rem;
+  margin: 0.5rem;
+}
+
+.userReg___closeButton {
+  display: flex;
+  align-self: flex-end;
+  margin-right: 3rem;
+}
+
+.form__divInput {
+  margin: 0.5rem;
+}
+
+.form__textInput {
+  margin: 1rem 0 0.3rem 0;
+}
+
+.form___input {
+  padding: 0.4rem;
+  border: none;
+  border-radius: 5pt;
+}
+
+.form___registerUserButton {
+  border: none;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 10pt;
+  background-color: var(--fitht-color);
+  color: var(--third-color);
+}

@@ -1,0 +1,37 @@
+.userDashboard___container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.userDashboard___createUserButton {
+  background-color: var(--primary-color);
+  width: 10rem;
+  height: 3rem;
+  border: none;
+  border-radius: 5pt;
+  font-family: "Red Hat Display", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.userDashboard___createUserButton > p {
+  font-size: 1rem;
+  margin: 0.5rem;
+  color: var(--forth-color);
+  font-weight: bold;
+}
+
+.userDashboard___userReg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

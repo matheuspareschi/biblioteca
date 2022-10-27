@@ -1,0 +1,71 @@
+.userView___container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.userView___title {
+  color: var(--second-color);
+  font-family: "Red Hat Display", sans-serif;
+  font-weight: 600;
+}
+
+.userView__cardContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.userView___table {
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 0.9em;
+  min-width: 400px;
+  border-radius: 5px 5px 0 0;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.userView___table thead tr {
+  background-color: var(--fitht-color);
+  color: var(--third-color);
+  text-align: left;
+}
+
+.userView___table th, .userView___table td {
+  padding: 12px 15px;
+}
+
+.userView___table tbody tr {
+  border-bottom: 1px solid var(--second-color);
+}
+
+.userView___table tbody tr:nth-of-type(even) {
+  background-color: #cbf3f052
+}
+
+.userView___table tbody tr:last-child {
+  border-bottom: 4px solid var(--fitht-color);
+}
+
+.cardButton {
+  padding: 0.5rem;
+  background-color: var(--primary-color);
+  color: var(--third-color);
+  border: none;
+  width: 100%;
+  border-radius: 10pt;
+  align-self: center;
+}
+
+.userView__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 2rem;
+  width: 30%;
+  border: 1pt solid var(--primary-color);
+  padding: 1rem;
+  border-radius: 10pt;
+}
