@@ -1,0 +1,45 @@
+.adminHomepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.adminHomepage___optionsContainer {
+  display: flex;
+  align-items: center;
+}
+
+.adminHomepage___userContainer {
+  display: flex;
+  margin: 0;
+  padding: 0rem;
+}
+
+.userContainer___title {
+  margin: 1rem 0 1rem 1rem;
+  font-size: 1.3rem;
+}
+
+.userContainer___name {
+  margin: 1rem 0.5rem;
+  color: var(--fitht-color);
+  font-weight: bold;
+  font-size: 1.3rem;
+}
+
+.optionsContainer___option {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 15pt;
+  border: none;
+  background: var(--forth-color);
+  width: 10rem;
+  height: 7rem;
+}
+
+.option__text {
+  color: rgb(66, 66, 66);
+  font-weight: bold;
+  margin: 0;
+  font-family: "Red Hat Display", sans-serif;
+}

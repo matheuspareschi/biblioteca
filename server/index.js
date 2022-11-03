@@ -7,7 +7,7 @@ const PORT = 3002;
 app.use(cors());
 app.use(express.json());
 
-// Creating user
+// Create user
 app.post("/api/createUser", (req, res) => {
   const name = req.body.name;
   const login = req.body.login;
@@ -18,7 +18,7 @@ app.post("/api/createUser", (req, res) => {
   const levelAcess = req.body.levelAcess;
 
   db.query(
-    "INSERT INTO usuario (nome, usuario, senha, telefone, email, endereco, nivel_idnivel) VALUES (?, ?, ?, ?, ?, ?, ?)",
+    "INSERT INTO usuario (nome, usuario, senha, telefone, email, endereco, nivel) VALUES (?, ?, ?, ?, ?, ?, ?)",
     [name, login, password, cell, email, adress, levelAcess],
     (err, result) => {
       if (err) {
@@ -51,7 +51,7 @@ app.post("/api/alterUser", (req, res) => {
   const userId = req.body.userId
 
   db.query(
-    "UPDATE usuario SET nome = ?, usuario = ?, senha =?, telefone=?, email=?, endereco=?, nivel_idnivel=? WHERE idusuario = ?",
+    "UPDATE usuario SET nome = ?, usuario = ?, senha =?, telefone=?, email=?, endereco=?, nivel=? WHERE idusuario = ?",
     [name, login, password, cell, email, adress, levelAcess, userId],
     (err, result) => {
       if (err) {
@@ -77,13 +77,39 @@ app.post("/api/consulteUser", (req, res) => {
   });
 });
 
-// Search one book
-
 // Get all book
-
-// Get an autor 
+app.get("/api/getAllBooks", (req, res) => {
+  db.query("SELECT * FROM livro", (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+    res.send(result);
+  });
+});
 
 // Create book
+app.post("/api/createBook", (req, res) => {
+  const titulo = req.body.titulo;
+  const edicao = req.body.edicao;
+  const isbn = req.body.isbn;
+  const imagem = req.body.imagem;
+  const autor = req.body.autor;
+  const genero = req.body.genero;
+  const quantidade = req.body.quantidade;
+  const pendente = req.body.pendente;
+
+  db.query(
+    "INSERT INTO livro (titulo, edicao, isbn, imagem, autor, genero, quantidade, pendente) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+    [titulo, edicao, isbn, imagem, autor, genero, quantidade, pendente],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      res.send(result);
+    }
+  );
+});
+
 
 // Alter book
 

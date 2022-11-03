@@ -3,7 +3,7 @@ import UserEdit from "../userEdit/userEdit";
 import axios from "axios";
 
 
-import "../userView/userView.css";
+import "./userView.css";
 
 const UserView = (props) => {
   const [users, setUsers] = useState([]);
@@ -38,7 +38,7 @@ const UserView = (props) => {
           <tbody>
           {users.map((user) => {
             return (
-              <tr key={user.idusuario}>
+              <tr key={user.idUsuario}>
                 <td> {user.nome} </td>
                 <td> {user.endereco}</td>
                 <td> {user.telefone} </td>

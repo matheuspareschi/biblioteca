@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import "../userDashboard/userDashboard.css";
 import { UserPlus } from "phosphor-react";
-import UserReg from "../../../components/userReg/userReg";
-import UserView from "../../../components/userView/userView"
+import UserReg from "../../../components/user/userReg/userReg";
+import UserView from "../../../components/user/userView/userView"
+import AdminHomepage from "../adminHomepage";
 
 function UserDashboard({viewAllUser}) {
   const [hide, setHide] = useState("none");
@@ -20,6 +21,8 @@ function UserDashboard({viewAllUser}) {
   
   return (
     <div className="userDashboard___container">
+      <AdminHomepage selected={"user"}/>
+
       <button className="userDashboard___createUserButton" onClick={() => onClickCreateUser()}>
         <UserPlus size={25} color="#cbf3f0" weight="duotone" />
         <p> Criar Usuário </p> 

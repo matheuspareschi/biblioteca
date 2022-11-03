@@ -12,6 +12,7 @@ import Header from "./components/Header/index";
 import Login from "./pages/login";
 import AdminHomepage from "./pages/admin/adminHomepage";
 import UserDashboard from "./pages/admin/userDashboard";
+import BooksDashboard from "./pages/admin/booksDashboard";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -22,6 +23,8 @@ root.render(
           <Route path="/" element={<Login />} />
           <Route path="/AdminHomepage" element={<AdminHomepage />} />
           <Route path="/UserDashboard" element={<UserDashboard />} />
+          <Route path="/BooksDashboard" element={<BooksDashboard />} />
+
         </Routes>
       </BrowserRouter>
     </Provider>

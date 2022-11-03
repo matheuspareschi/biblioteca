@@ -36,7 +36,7 @@ const Login = ({user, setUser}) => {
 
   // Navegação de acordo com usuário
   const navigation = () => {
-    if (user[0].nivel_idnivel == 2 && user !== undefined) {
+    if (user[0].nivel == 1 && user !== undefined) {
         navigate('/AdminHomepage')
     } 
   }
