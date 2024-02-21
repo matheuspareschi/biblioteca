@@ -6,6 +6,7 @@
   --third-color: #fff4f4;
   --forth-color: #cbf3f0;
   --fitht-color: #2ec4b6;
-  background-color: var(--third-color);
+  --sixty-color: #32270B;
+  background-color: #d5d1cc;
   font-family: 'Red Hat Display', sans-serif;
 }

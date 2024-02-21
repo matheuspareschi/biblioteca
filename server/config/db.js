@@ -3,7 +3,7 @@ const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "_Mat040698@",
-  database: "Biblioteca",
+  database: "BetesdaDataBase",
 });
 
 module.exports = db;

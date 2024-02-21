@@ -14,90 +14,72 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema Biblioteca
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `Biblioteca` DEFAULT CHARACTER SET utf8 ;
-USE `Biblioteca` ;
+CREATE SCHEMA IF NOT EXISTS `BetesdaDataBase` DEFAULT CHARACTER SET utf8 ;
+USE `BetesdaDataBase` ;
 
 -- -----------------------------------------------------
 -- Table `Biblioteca`.`usuario`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Biblioteca`.`usuario` (
-  `idUsuario` INT NOT NULL AUTO_INCREMENT,
-  `nome` VARCHAR(200) NOT NULL,
-  `usuario` VARCHAR(45) NOT NULL,
-  `senha` VARCHAR(45) NOT NULL,
-  `telefone` VARCHAR(45) NULL,
+CREATE TABLE IF NOT EXISTS `BetesdaDataBase`.`members` (
+  `idMember` INT NOT NULL AUTO_INCREMENT,
+  `name` VARCHAR(200) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `phone` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NULL,
-  `endereco` VARCHAR(45) NULL,
-  `nivel` TINYINT NULL,
-  PRIMARY KEY (`idUsuario`)
+  `address` VARCHAR(45) NULL,
+  `addressNumber` VARCHAR(45) NULL,
+  `neighborhood` VARCHAR(45) NULL,
+   `city` VARCHAR(45) NULL,
+   `zipcode` VARCHAR(45) NULL,
+   `rg` VARCHAR(45) NULL,
+   `cpf` VARCHAR(45) NULL,
+   `dateOfBaptism` VARCHAR(45) NULL,
+    `dateOfBirth` VARCHAR(45) NULL,
+   `job` VARCHAR(45) NULL,
+   `maritalStatus` VARCHAR(45) NULL,
+   `levelAccess` INT NULL,
+  PRIMARY KEY (`idMember`)
 )
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `Biblioteca`.`livro`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Biblioteca`.`livro` (
-  `idLivro` INT NOT NULL AUTO_INCREMENT,
-  `titulo` VARCHAR(200) NOT NULL,
-  `edicao` VARCHAR(10) NOT NULL,
-  `isbn` VARCHAR(45) NOT NULL,
-  `imagem` LONGTEXT NOT NULL,
-  `autor` VARCHAR(45) NOT NULL,
-  `genero` VARCHAR(45) NOT NULL,
-  `quantidade` INT NOT NULL,
-  `pendente` TINYINT NOT NULL,
-  PRIMARY KEY (`idLivro`))
+CREATE TABLE IF NOT EXISTS `BetesdaDataBase`.`libraryCollection` (
+  `idBook` INT NOT NULL AUTO_INCREMENT,
+  `title` VARCHAR(200) NOT NULL,
+  `author` VARCHAR(45) NOT NULL,
+  `genre` VARCHAR(45) NOT NULL,
+  `quantity` INT NOT NULL,
+  `owner` VARCHAR (45) NOT NULL,
+  `pending` TINYINT NOT NULL,
+  PRIMARY KEY (`idBook`))
 ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `Biblioteca`.`emprestimo`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Biblioteca`.`emprestimo` (
-  `idEmprestimo` INT NOT NULL AUTO_INCREMENT,
-  `dataEmprestimo` DATE NOT NULL,
-  `dataDevolucao` DATE NOT NULL,
-  `pendente` TINYINT NOT NULL,
-  `idUsuario` INT NOT NULL,
-  `idLivro` INT NOT NULL,
-  PRIMARY KEY (`idEmprestimo`),
-  INDEX `fk_emprestimo_usuario1_idx` (`idUsuario` ASC) ,
-  INDEX `fk_emprestimo_livro1_idx` (`idLivro` ASC) ,
-  CONSTRAINT `fk_emprestimo_usuario1`
-    FOREIGN KEY (`idUsuario`)
-    REFERENCES `Biblioteca`.`usuario` (`idUsuario`)
+CREATE TABLE IF NOT EXISTS `BetesdaDataBase`.`loan` (
+  `idLoan` INT NOT NULL AUTO_INCREMENT,
+  `loanDate` DATE NOT NULL,
+  `returnDate` DATE NOT NULL,
+  `pending` TINYINT NOT NULL,
+  `idMember` INT NOT NULL,
+  `idBook` INT NOT NULL,
+  PRIMARY KEY (`idLoan`),
+  INDEX `fk_emprestimo_members1_idx` (`idMember` ASC) ,
+  INDEX `fk_emprestimo_libraryCollection1_idx` (`idBook` ASC) ,
+  CONSTRAINT `fk_emprestimo_members1`
+    FOREIGN KEY (`idMember`)
+    REFERENCES `Biblioteca`.`members` (`idMember`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_emprestimo_livro1`
-    FOREIGN KEY (`idLivro`)
-    REFERENCES `Biblioteca`.`livro` (`idLivro`)
+  CONSTRAINT `fk_emprestimo_libraryCollection1`
+    FOREIGN KEY (`idBook`)
+    REFERENCES `Biblioteca`.`libraryCollection` (`idBook`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `Biblioteca`.`avaliacao`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Biblioteca`.`avaliacao` (
-  `idAvaliacao` INT NOT NULL AUTO_INCREMENT,
-  `descricao` VARCHAR(150) NOT NULL,
-  `idLivro` INT NOT NULL,
-  `idUsuario` INT NOT NULL,
-  PRIMARY KEY (`idAvaliacao`),
-  INDEX `fk_avaliacao_livro1_idx` (`idLivro` ASC),
-  INDEX `fk_avaliacao_usuario1_idx` (`idUsuario` ASC),
-  CONSTRAINT `fk_avaliacao_livro1`
-    FOREIGN KEY (`idLivro`)
-    REFERENCES `Biblioteca`.`livro` (`idLivro`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_avaliacao_usuario1`
-    FOREIGN KEY (`idUsuario`)
-    REFERENCES `Biblioteca`.`usuario` (`idUsuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;

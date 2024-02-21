@@ -1,32 +1,34 @@
 import React from "react";
 
+import Login from "./pages/login/index.tsx";
+import MembersScreen from "./pages/members/index.tsx";
+import UserBooksScreen from "./pages/userBooks/index.tsx";
+import LoanScreen from "./pages/loan/index.tsx";
+import Homepage from "./pages/home/index";
+
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-import store  from './app/store';
-import { Provider } from 'react-redux';
-
 import "./index.css";
+import { ChakraProvider } from "@chakra-ui/react";
 
-import Header from "./components/Header/index";
-import Login from "./pages/login";
-import AdminHomepage from "./pages/admin/adminHomepage";
-import UserDashboard from "./pages/admin/userDashboard";
-import BooksDashboard from "./pages/admin/booksDashboard";
+import { UserProvider } from "./comons/context/user/index.tsx";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/AdminHomepage" element={<AdminHomepage />} />
-          <Route path="/UserDashboard" element={<UserDashboard />} />
-          <Route path="/BooksDashboard" element={<BooksDashboard />} />
-
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+    <ChakraProvider>
+      <UserProvider>
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Login />} />
+              <Route path="/members-screen" element={<MembersScreen />} />
+              <Route path="/loan-screen" element={<LoanScreen />} />
+              <Route path="/user-books-screen" element={<UserBooksScreen />} />
+              <Route path="/library-collection" element={<Homepage />} />
+            </Routes>
+          </BrowserRouter>
+      </UserProvider>
+    </ChakraProvider>
   </React.StrictMode>
 );
